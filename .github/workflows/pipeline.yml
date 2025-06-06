@@ -30,4 +30,4 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Print name
-      run: echo "The build name is $NAME | Java is $JAVA_VER | Distribution is $DIST | os is $RUNNER_OS | API key is $secrets.API_KEY"
+      run: echo "The build name is $NAME | Java is $JAVA_VER | Distribution is $DIST | os is $RUNNER_OS | API key is ${{ secrets.API_KEY }}"
