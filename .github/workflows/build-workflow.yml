@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Build Workflow
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B clean package
 
     - name: Print name
       run: echo "The build name is $NAME | Java is $JAVA_VER | Distribution is $DIST | os is $RUNNER_OS | API key is ${{ secrets.API_KEY }}"
