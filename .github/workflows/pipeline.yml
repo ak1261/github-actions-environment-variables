@@ -12,16 +12,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      JAVA_VER: "21"
+      DIST: "temurin"
+
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 21
+    
+    - name: Set up JDK ${{ env.JAVA_VER }}
       uses: actions/setup-java@v3
       with:
-        java-version: '21'
-        distribution: 'temurin'
+        java-version: ${{ env.JAVA_VER }}
+        distribution: ${{ env.DIST }}
         cache: maven
+        
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
     - name: Print name
-      run: echo "The build name is ${NAME}"
+      run: echo "The build name is ${NAME} | Java is ${{ env.JAVA_VER }} | Distribution is ${{ env.DIST }}"
